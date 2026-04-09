@@ -4,8 +4,8 @@
 const H = "/images/home";
 
 export const siteConfig = {
-  authorName: "Anna Mazzola",
-  siteTitle: "Anna Mazzola | Official Author Site",
+  authorName: "Moiz Haider",
+  siteTitle: "Moiz Haider | Official Author Site",
   siteDescription:
     "Official author website — books, news, and readers club.",
   footer: {

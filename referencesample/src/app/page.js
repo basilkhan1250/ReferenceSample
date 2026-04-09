@@ -14,7 +14,6 @@ const display = Playfair_Display({
 const alsoByBooks = siteConfig.books.filter(
   (b) => b.slug !== "anna-sharpe" && b.slug !== "the-book-of-secrets",
 );
-const firstName = siteConfig.authorName.split(" ")[0];
 
 /** Lime / orange accents to match reference homepage */
 const lime = "text-[#c8e64a]";
@@ -155,7 +154,7 @@ export default function Home() {
               "mb-12 text-center text-3xl font-semibold md:mb-14 md:text-4xl",
             ].join(" ")}
           >
-            Also by {firstName}
+            Also by {siteConfig.authorName}
           </h2>
           <ul className="flex flex-wrap justify-center gap-8 md:gap-10 lg:gap-12">
             {alsoByBooks.map((book) => (

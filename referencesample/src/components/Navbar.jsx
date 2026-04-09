@@ -62,7 +62,7 @@ export default function Navbar() {
   }, [pathname, selectOptions]);
 
   return (
-    <header className="bg-black text-white">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black text-white shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
       <nav
         className="flex h-28 w-full items-center justify-between px-0"
         aria-label="Primary"
@@ -70,7 +70,7 @@ export default function Navbar() {
         {logoSrc ? (
           <Link
             href="/"
-            className="relative block h-9 w-[min(72vw,280px)] shrink-0 pl-8 sm:pl-12 md:ml-0 md:h-11 md:w-[min(65vw,320px)] md:pl-16 lg:h-12 lg:w-[360px]"
+            className="relative block h-9 w-[min(72vw,280px)] shrink-0 pl-8 transition-opacity hover:opacity-80 sm:pl-12 md:ml-0 md:h-11 md:w-[min(65vw,320px)] md:pl-16 lg:h-12 lg:w-[360px]"
           >
             <Image
               alt={siteConfig.authorName}
@@ -85,7 +85,7 @@ export default function Navbar() {
         ) : (
           <Link
             href="/"
-            className="pl-8 font-sans text-xl font-bold tracking-[0.14em] text-white uppercase sm:pl-12 md:pl-16 md:text-2xl lg:text-[1.65rem] lg:tracking-[0.18em]"
+            className="pl-8 font-sans text-xl font-bold tracking-[0.14em] text-white uppercase transition-colors hover:text-red-500 sm:pl-12 md:pl-16 md:text-2xl lg:text-[1.65rem] lg:tracking-[0.18em]"
           >
             {siteConfig.authorName}
           </Link>
@@ -119,10 +119,10 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors",
+                  "inline-flex items-center gap-1 py-2 transition-colors hover:text-red-500",
                   linkActive(pathname, item.href)
                     ? "text-lime-400"
-                    : "text-white/85 hover:text-white",
+                    : "text-white/85",
                 ].join(" ")}
               >
                 {item.label}
@@ -133,19 +133,19 @@ export default function Navbar() {
           <li className="group relative">
             <span
               className={[
-                "inline-flex cursor-default items-center gap-1 py-2 text-white/85",
-                booksActive ? "text-lime-400" : "",
+                "inline-flex cursor-default items-center gap-1 py-2 transition-colors group-hover:text-red-500",
+                booksActive ? "text-lime-400" : "text-white/85",
               ].join(" ")}
             >
               BOOKS
-              <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-white/80" />
+              <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-current opacity-80" />
             </span>
             <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] translate-y-1 border border-white/10 bg-black py-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               {siteConfig.books.map((b) => (
                 <li key={b.slug}>
                   <Link
                     href={`/books/${b.slug}`}
-                    className="block px-4 py-2 text-[13px] font-semibold tracking-wide text-white/90 hover:bg-white/10 hover:text-lime-400"
+                    className="block px-4 py-2 text-[13px] font-semibold tracking-wide text-white/90 transition-colors hover:bg-white/10 hover:text-red-500"
                   >
                     {b.navLabel}
                   </Link>
@@ -159,10 +159,10 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors",
+                  "inline-flex items-center gap-1 py-2 transition-colors hover:text-red-500",
                   linkActive(pathname, item.href)
                     ? "text-lime-400"
-                    : "text-white/85 hover:text-white",
+                    : "text-white/85",
                 ].join(" ")}
               >
                 {item.label}
