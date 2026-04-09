@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="600" viewBox="0 0 480 600">
+  <rect width="480" height="600" fill="#1a1a1a"/>
+  <text x="240" y="300" text-anchor="middle" fill="#cade68" font-family="Georgia,serif" font-size="20">Author photo</text>
+  <text x="240" y="335" text-anchor="middle" fill="#bbb" font-family="Arial,sans-serif" font-size="13">Replace: /images/author.jpg</text>
+</svg>

@@ -1,15 +1,14 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
-import { Playfair_Display } from "next/font/google";
+import { usePathname, useRouter } from "next/navigation";
+import { useMemo } from "react";
+import { siteConfig } from "../config/site";
+import { imageUnoptimized } from "../lib/imageUtils";
 
-const brandFont = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  display: "swap",
-});
-
-const NAV_ITEMS = [
-  { href: "/", label: "HOME", active: true },
-  { href: "/books", label: "BOOKS", hasDropdown: true },
+const TOP_LINKS = [
+  { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/articles", label: "ARTICLES" },
   { href: "/news-events", label: "NEWS & EVENTS" },
@@ -33,39 +32,140 @@ function ChevronDownIcon(props) {
   );
 }
 
+function linkActive(pathname, href) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const booksActive = pathname.startsWith("/books");
+  const logoSrc = siteConfig.images.headerLogo;
+
+  const selectOptions = useMemo(() => {
+    const opts = [{ href: "/", label: "HOME" }];
+    for (const b of siteConfig.books) {
+      opts.push({ href: `/books/${b.slug}`, label: b.navLabel });
+    }
+    for (const item of TOP_LINKS.slice(1)) {
+      opts.push({ href: item.href, label: item.label });
+    }
+    return opts;
+  }, []);
+
+  const selectValue = useMemo(() => {
+    const match = selectOptions.find(
+      (o) => o.href === pathname || pathname.startsWith(`${o.href}/`),
+    );
+    return match?.href ?? "";
+  }, [pathname, selectOptions]);
+
   return (
     <header className="bg-black text-white">
       <nav
         className="flex h-28 w-full items-center justify-between px-0"
         aria-label="Primary"
       >
-        <Link
-          href="/"
-          className={[
-            brandFont.className,
-            "pl-16 text-4xl font-semibold tracking-[0.22em] uppercase",
-          ].join(" ")}
-        >
-          Moiz Haider
-        </Link>
+        {logoSrc ? (
+          <Link
+            href="/"
+            className="relative block h-9 w-[min(72vw,280px)] shrink-0 pl-8 sm:pl-12 md:ml-0 md:h-11 md:w-[min(65vw,320px)] md:pl-16 lg:h-12 lg:w-[360px]"
+          >
+            <Image
+              alt={siteConfig.authorName}
+              className="object-contain object-left"
+              fill
+              priority
+              sizes="(max-width: 768px) 72vw, 360px"
+              src={logoSrc}
+              unoptimized={imageUnoptimized(logoSrc)}
+            />
+          </Link>
+        ) : (
+          <Link
+            href="/"
+            className="pl-8 font-sans text-xl font-bold tracking-[0.14em] text-white uppercase sm:pl-12 md:pl-16 md:text-2xl lg:text-[1.65rem] lg:tracking-[0.18em]"
+          >
+            {siteConfig.authorName}
+          </Link>
+        )}
 
-        <ul className="flex items-center gap-6 pr-10 text-[16px] font-semibold tracking-[0.10em]">
-          {NAV_ITEMS.map((item) => (
+        <div className="flex items-center gap-4 pr-4 sm:pr-8 md:hidden">
+          <label className="sr-only" htmlFor="select-page">
+            Select Page
+          </label>
+          <select
+            id="select-page"
+            className="max-w-[min(52vw,220px)] cursor-pointer border border-white/40 bg-black py-2 pl-3 pr-8 text-[11px] font-semibold uppercase tracking-[0.12em] text-white focus:border-lime-400 focus:outline-none"
+            value={selectValue}
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v) router.push(v);
+            }}
+          >
+            <option value="">Select Page</option>
+            {selectOptions.map((o) => (
+              <option key={o.href} value={o.href}>
+                {o.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <ul className="hidden items-center gap-5 pr-10 text-[15px] font-semibold tracking-[0.10em] md:flex md:text-[15px] lg:gap-6 lg:text-[16px]">
+          {TOP_LINKS.slice(0, 1).map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 className={[
                   "inline-flex items-center gap-1 py-2 transition-colors",
-                  item.active
+                  linkActive(pathname, item.href)
                     ? "text-lime-400"
                     : "text-white/85 hover:text-white",
                 ].join(" ")}
               >
                 {item.label}
-                {item.hasDropdown ? (
-                  <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-white/80" />
-                ) : null}
+              </Link>
+            </li>
+          ))}
+
+          <li className="group relative">
+            <span
+              className={[
+                "inline-flex cursor-default items-center gap-1 py-2 text-white/85",
+                booksActive ? "text-lime-400" : "",
+              ].join(" ")}
+            >
+              BOOKS
+              <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-white/80" />
+            </span>
+            <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] translate-y-1 border border-white/10 bg-black py-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+              {siteConfig.books.map((b) => (
+                <li key={b.slug}>
+                  <Link
+                    href={`/books/${b.slug}`}
+                    className="block px-4 py-2 text-[13px] font-semibold tracking-wide text-white/90 hover:bg-white/10 hover:text-lime-400"
+                  >
+                    {b.navLabel}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          {TOP_LINKS.slice(1).map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={[
+                  "inline-flex items-center gap-1 py-2 transition-colors",
+                  linkActive(pathname, item.href)
+                    ? "text-lime-400"
+                    : "text-white/85 hover:text-white",
+                ].join(" ")}
+              >
+                {item.label}
               </Link>
             </li>
           ))}
@@ -74,4 +174,3 @@ export default function Navbar() {
     </header>
   );
 }
-
