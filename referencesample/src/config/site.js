@@ -26,12 +26,12 @@ export const siteConfig = {
   home: {
     annaSharpe: {
       headline:
-        "The first Anna Sharpe book, a fast-paced and razor-sharp thriller, is out now!",
+        "The first Moiz Haider book, Alamiyah (المیہ), a haunting and deeply reflective poetry collection.",
       quote:
-        "A high octane, page-turning thriller, but with characters who are fully rounded human beings you care about. I really loved it",
+        "A powerful exploration of love, loss, and the quiet weight they leave behind.",
       quoteAttribution: "JENNIE GODFREY",
       ctaLabel: "Find out More",
-      ctaHref: "/books/anna-sharpe",
+      ctaHref: "/books/alamiyah",
     },
     italyNovel: {
       headline:

@@ -22,7 +22,7 @@ const orangeBg = "bg-[#e07042]";
 
 function CoverFrame({ src, alt, priority = false }) {
   return (
-    <div className="relative mx-auto aspect-[2/3] w-full max-w-[300px] shadow-[0_8px_40px_rgba(0,0,0,0.45)] md:max-w-[340px]">
+    <div className="relative mx-auto aspect-[2/3] w-full max-w-[300px] shadow-[0_8px_40px_rgba(0,0,0,0.45)] md:max-w-[380px]">
       <Image
         alt={alt}
         className="object-cover"
