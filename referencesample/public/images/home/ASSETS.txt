@@ -1,19 +1,21 @@
-Copy your provided PNGs into this folder with these exact names:
+Put your image files in this folder: public/images/home/
 
-Your image #  (description)              ->  filename
-----------------------------------------------------------
-2  Notes on a Drowning cover            ->  cover-sharpe.png
-3  Bird and mushrooms illustration     ->  decor.png
-4  The Book of Secrets cover           ->  cover-secrets.png
-5  Tower Bridge (dark hero bg)         ->  bg-sharpe.png
-6  Apothecary / library interior       ->  bg-italy.png
-7  Study / gothic library (readers bg) ->  bg-readers.png
-8  The House of Whispers cover         ->  cover-whispers.png
-9  The Clockwork Girl cover            ->  cover-clockwork.png
-10 The Story Keeper cover              ->  cover-story-keeper.png
-11 The Unseeing cover                  ->  cover-unseeing.png
-12 Author portrait                     ->  author.png
+Use these exact filenames (or edit src/config/homeImagePaths.js):
 
-Image #1 is the layout reference screenshot - no file needed.
+  author-portrait.jpg           Author photo (readers block + About page)
+  first-hero-background.jpg     Background for the first big hero section
+  second-hero-background.jpg    Background for the second hero section
+  readers-section-background.jpg   Background behind Readers Club
+  first-book-cover.jpg          First hero book ONLY (right column of first section)
+  second-book-cover.jpg         Second hero book + Book of Secrets book page (old shared cover)
+  decorative-illustration.png Small art under second hero button
+  third-book-cover.jpg          Also-by grid + book page (House of Whispers)
+  fourth-book-cover.jpg         Also-by + book page (Clockwork Girl)
+  fifth-book-cover.jpg          Also-by + book page (Story Keeper)
+  sixth-book-cover.jpg          Also-by + book page (Unseeing)
 
-After copying, run: npm run dev
+If you use .png instead of .jpg, change the extension only in:
+  src/config/homeImagePaths.js  ->  object homeImageNames
+
+Anna Sharpe + Book of Secrets use first + second covers on the home heroes
+and the same files on /books/... routes.

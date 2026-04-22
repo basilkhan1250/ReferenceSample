@@ -1,73 +1,29 @@
-# How to use your own images
+# Images
 
-Everything the browser loads from your project uses files under the **`public`** folder. There is no `/public` in the URL: a file at **`public/images/home/author.png`** is requested in the app as **`/images/home/author.png`**.
+Files go in **`public/images/home/`**. URLs in code look like **`/images/home/your-file.jpg`** (no `public` in the path).
 
-You usually only edit **`src/config/site.js`** to point at the paths you want.
+## One file lists every filename
 
----
+Edit **`src/config/homeImagePaths.js`** — object **`homeImageNames`**. Each value is a filename; paths are built automatically.
 
-## 1. Put files on disk
+| Key | Used for |
+|-----|-----------|
+| `authorPortrait` | Author photo (readers section + About) |
+| `firstHeroBackground` | First full-width hero background |
+| `secondHeroBackground` | Second full-width hero background |
+| `readersSectionBackground` | Readers’ club background |
+| `firstHeroBookCover` | First hero cover only + `/books/anna-sharpe` |
+| `secondBookCover` | Second hero cover + `/books/the-book-of-secrets` |
+| `decorativeIllustration` | Small graphic under second hero CTA |
+| `thirdBookCover` … `sixthBookCover` | “Also by” row + matching book pages |
 
-Example layout (you can rename or reorganize; just match paths in `site.js`):
+## Site copy and author name
 
-```
-referencesample/
-  public/
-    images/
-      home/
-        bg-sharpe.png          ← hero 1 background
-        bg-italy.png           ← hero 2 background
-        bg-readers.png         ← readers’ club background
-        cover-sharpe.png
-        cover-secrets.png
-        decor.png
-        cover-whispers.png
-        cover-clockwork.png
-        cover-story-keeper.png
-        cover-unseeing.png
-        author.png
-```
+**`src/config/site.js`** — `authorName`, `siteTitle`, book titles, blurbs.  
+**`images.headerLogo`** — path to a logo image, or **`""`** for text name in the navbar.
 
-Supported formats: **PNG**, **JPG**, **WEBP**, **GIF**. SVG works but is treated as unoptimized in code.
+## After renaming or deleting files on disk
 
----
-
-## 2. Wire paths in `src/config/site.js`
-
-| What you want to change | Where to edit |
-|-------------------------|----------------|
-| **Homepage** hero backgrounds | `homeAssets.bgSharpe`, `homeAssets.bgItaly`, `homeAssets.bgReaders` |
-| **Homepage** book covers in heroes | `homeAssets.coverSharpe`, `homeAssets.coverSecrets` |
-| **Homepage** small illustration (Italy block) | `homeAssets.decor` |
-| **Homepage** author photo (readers’ section) | `homeAssets.author` |
-| **About** page portrait | `images.authorPortrait` (can be the same path as `homeAssets.author`) |
-| **Books** pages (grid + each book page) | Each item’s **`coverSrc`** in the **`books`** array |
-| **Header logo** (optional image instead of text) | `images.headerLogo` — e.g. `/images/my-logo.png`, or **`""`** for text name |
-
-Use strings starting with **`/`**, for example: **`/images/home/my-photo.jpg`**.
-
----
-
-## 3. Using images on other pages
-
-- **About** (`src/app/about/page.js`): uses **`siteConfig.images.authorPortrait`**.
-- **Books** listing and **`/books/[slug]`**: use each book’s **`coverSrc`** from **`site.js`**.
-- **Home** only: built from **`siteConfig.homeAssets`** in **`src/app/page.js`**. To add a **new** image in a new section, add a path in **`site.js`** and use `<Image src={...} />` in **`page.js`** (same pattern as existing sections).
-
----
-
-## 4. Images hosted on the internet (not in `public/`)
-
-If the URL is **`https://...`** on **your** domain, add a rule in **`next.config.mjs`** under **`images.remotePatterns`** (hostname + pathname) so Next.js is allowed to optimize it. Files only under **`public/`** need no extra config.
-
----
-
-## 5. After you change files
-
-Restart **`npm run dev`** if the dev server does not pick up new files. Run **`npm run build`** before deploy to confirm there are no errors.
-
----
-
-## 6. Author name (navbar, footer, tab title)
-
-Edit **`authorName`** and **`siteTitle`** at the top of **`src/config/site.js`**.
+1. **`homeImageNames`** in **`homeImagePaths.js`** must match the real filenames in **`public/images/home/`** (including extension: `.jpg`, `.png`, etc.).
+2. Local home images are loaded **directly** (no Next.js optimizer cache) so renames and deletes should show correctly after a normal browser refresh.
+3. If anything still looks stuck: stop the dev server, delete the **`.next`** folder in the project root, run **`npm run dev`** again, then hard-refresh the browser (Ctrl+Shift+R) or disable cache in DevTools → Network.

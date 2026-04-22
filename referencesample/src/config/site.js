@@ -1,7 +1,7 @@
 /**
- * Author site - copy homepage images into public/images/home/ (see ASSETS.txt there).
+ * Site copy + metadata. Image filenames live in `homeImagePaths.js`.
  */
-const H = "/images/home";
+import { bookCoverBySlug, homeAssets } from "./homeImagePaths";
 
 export const siteConfig = {
   authorName: "Moiz Haider",
@@ -16,20 +16,12 @@ export const siteConfig = {
   images: {
     headerLogo: "",
     homeDividerGraphic: "",
-    authorPortrait: `${H}/author.png`,
-    heroAnnaSharpe: `${H}/cover-sharpe.png`,
-    heroItalyNovel: `${H}/cover-secrets.png`,
+    authorPortrait: homeAssets.authorPortrait,
+    heroAnnaSharpe: homeAssets.firstHeroBookCover,
+    heroItalyNovel: homeAssets.secondBookCover,
   },
 
-  homeAssets: {
-    bgSharpe: `${H}/bg-sharpe.png`,
-    bgItaly: `${H}/bg-italy.png`,
-    bgReaders: `${H}/bg-readers.png`,
-    coverSharpe: `${H}/cover-sharpe.png`,
-    coverSecrets: `${H}/cover-secrets.png`,
-    decor: `${H}/decor.png`,
-    author: `${H}/author.png`,
-  },
+  homeAssets,
 
   home: {
     annaSharpe: {
@@ -60,7 +52,7 @@ export const siteConfig = {
       slug: "anna-sharpe",
       navLabel: "Anna Sharpe Books",
       pageTitle: "Anna Sharpe Books",
-      coverSrc: `${H}/cover-sharpe.png`,
+      coverSrc: bookCoverBySlug["anna-sharpe"],
       blurb:
         "A fast-paced and razor-sharp thriller — the first Anna Sharpe novel.",
     },
@@ -68,7 +60,7 @@ export const siteConfig = {
       slug: "the-book-of-secrets",
       navLabel: "The Book of Secrets",
       pageTitle: "The Book of Secrets",
-      coverSrc: `${H}/cover-secrets.png`,
+      coverSrc: bookCoverBySlug["the-book-of-secrets"],
       blurb:
         "A chilling, mesmerising novel inspired by real events in 17th century Italy.",
     },
@@ -76,28 +68,28 @@ export const siteConfig = {
       slug: "the-house-of-whispers",
       navLabel: "The House of Whispers",
       pageTitle: "The House of Whispers",
-      coverSrc: `${H}/cover-whispers.png`,
+      coverSrc: bookCoverBySlug["the-house-of-whispers"],
       blurb: "",
     },
     {
       slug: "the-clockwork-girl",
       navLabel: "The Clockwork Girl",
       pageTitle: "The Clockwork Girl",
-      coverSrc: `${H}/cover-clockwork.png`,
+      coverSrc: bookCoverBySlug["the-clockwork-girl"],
       blurb: "",
     },
     {
       slug: "the-story-keeper",
       navLabel: "The Story Keeper",
       pageTitle: "The Story Keeper",
-      coverSrc: `${H}/cover-story-keeper.png`,
+      coverSrc: bookCoverBySlug["the-story-keeper"],
       blurb: "",
     },
     {
       slug: "the-unseeing",
       navLabel: "The Unseeing",
       pageTitle: "The Unseeing",
-      coverSrc: `${H}/cover-unseeing.png`,
+      coverSrc: bookCoverBySlug["the-unseeing"],
       blurb: "",
     },
   ],
