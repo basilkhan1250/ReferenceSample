@@ -28,8 +28,8 @@ export const siteConfig = {
       headline:
         "The first Moiz Haider book, Alamiyah (المیہ), a haunting and deeply reflective poetry collection.",
       quote:
-        "A powerful exploration of love, loss, and the quiet weight they leave behind.",
-      quoteAttribution: "JENNIE GODFREY",
+        "The wound is the place where the Light enters you.",
+      quoteAttribution: "RUMI",
       ctaLabel: "Find out More",
       ctaHref: "/books/alamiyah",
     },

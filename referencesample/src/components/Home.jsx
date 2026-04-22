@@ -16,13 +16,15 @@ const alsoByBooks = siteConfig.books.filter(
 );
 
 const lime = "text-[#c8e64a]";
-const limeBg = "bg-[#c8e64a]";
+/** First book hero only (headline + CTA) — red instead of lime */
+const firstHeroTitle = "text-red-500";
+const firstHeroButton = "bg-red-500 hover:bg-red-600";
 const orange = "text-[#e07042]";
 const orangeBg = "bg-[#e07042]";
 
 function CoverFrame({ src, alt, priority = false }) {
   return (
-    <div className="relative mx-auto aspect-[2/3] w-full max-w-[300px] shadow-[0_8px_40px_rgba(0,0,0,0.45)] md:max-w-[380px]">
+    <div className="relative mx-auto aspect-[2/3] w-full max-w-[300px] shadow-[0_8px_40px_rgba(0,0,0,0.45)] md:max-w-[340px]">
       <Image
         alt={alt}
         className="object-cover"
@@ -58,7 +60,7 @@ export default function Home() {
             <h2
               className={[
                 display.className,
-                lime,
+                firstHeroTitle,
                 "text-2xl font-semibold leading-snug sm:text-3xl md:text-[1.75rem] lg:text-[2rem]",
               ].join(" ")}
             >
@@ -75,8 +77,8 @@ export default function Home() {
             <div>
               <Link
                 className={[
-                  "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-black transition-opacity hover:opacity-90",
-                  limeBg,
+                  "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors",
+                  firstHeroButton,
                 ].join(" ")}
                 href={h.annaSharpe.ctaHref}
               >
