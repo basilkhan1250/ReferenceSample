@@ -26,10 +26,10 @@ export const siteConfig = {
   home: {
     annaSharpe: {
       headline:
-        "The first Moiz Haider book, Alamiyah (المیہ), a haunting and deeply reflective poetry collection.",
+        "Alamiyah explores love, loss, and absence with philosophical depth. It observes pain as it is lived — unresolved, intimate, and real.",
       quote:
-        "The wound is the place where the Light enters you.",
-      quoteAttribution: "RUMI",
+        "What we have once enjoyed we can never lose.",
+      quoteAttribution: "Helen Keller",
       ctaLabel: "Find out More",
       ctaHref: "/books/alamiyah",
     },

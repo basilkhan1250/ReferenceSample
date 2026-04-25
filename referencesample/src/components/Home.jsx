@@ -11,10 +11,6 @@ const display = Playfair_Display({
   display: "swap",
 });
 
-const alsoByBooks = siteConfig.books.filter(
-  (b) => b.slug !== "anna-sharpe" && b.slug !== "the-book-of-secrets",
-);
-
 const lime = "text-[#c8e64a]";
 /** First book hero only (headline + CTA) — red instead of lime */
 const firstHeroTitle = "text-red-500";
@@ -140,38 +136,6 @@ export default function Home() {
           <div className="order-1 md:order-2">
             <CoverFrame alt={h.italyNovel.headline} src={a.secondBookCover} />
           </div>
-        </div>
-      </section>
-
-      <section className="bg-black py-16 md:py-20 lg:py-24">
-        <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-16">
-          <h2
-            className={[
-              display.className,
-              lime,
-              "mb-12 text-center text-3xl font-semibold md:mb-14 md:text-4xl",
-            ].join(" ")}
-          >
-            Also by {siteConfig.authorName}
-          </h2>
-          <ul className="flex flex-wrap justify-center gap-8 md:gap-10 lg:gap-12">
-            {alsoByBooks.map((book) => (
-              <li key={book.slug} className="w-[42%] max-w-[200px] sm:w-[28%]">
-                <Link className="group block" href={`/books/${book.slug}`}>
-                  <div className="relative mx-auto aspect-[2/3] w-full overflow-hidden shadow-[0_6px_28px_rgba(0,0,0,0.5)] ring-1 ring-white/10 transition group-hover:ring-white/25">
-                    <Image
-                      alt={book.pageTitle}
-                      className="object-cover"
-                      fill
-                      sizes="(max-width: 640px) 42vw, 200px"
-                      src={book.coverSrc}
-                      unoptimized={imageUnoptimized(book.coverSrc)}
-                    />
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
