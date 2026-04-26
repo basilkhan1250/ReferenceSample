@@ -11,6 +11,8 @@ function path(filename) {
 }
 
 export const homeImageNames = {
+  /** Navbar site logo; change the filename here when you replace the file. */
+  headerLogo: "header-logo.png",
   authorPortrait: "author-portrait.jpg",
   firstHeroBackground: "first-hero-background.jpg",
   secondHeroBackground: "second-hero-background.jpg",
@@ -27,6 +29,7 @@ export const homeImageNames = {
 };
 
 export const homeAssets = {
+  headerLogo: path(homeImageNames.headerLogo),
   authorPortrait: path(homeImageNames.authorPortrait),
   firstHeroBackground: path(homeImageNames.firstHeroBackground),
   secondHeroBackground: path(homeImageNames.secondHeroBackground),

@@ -2,6 +2,7 @@ Put your image files in this folder: public/images/home/
 
 Use these exact filenames (or edit src/config/homeImagePaths.js):
 
+  header-logo.png               Navbar logo (replace the file; or rename in homeImagePaths)
   author-portrait.jpg           Author photo (readers block + About page)
   first-hero-background.jpg     Background for the first big hero section
   second-hero-background.jpg    Background for the second hero section

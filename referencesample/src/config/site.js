@@ -14,7 +14,7 @@ export const siteConfig = {
   },
 
   images: {
-    headerLogo: "",
+    headerLogo: homeAssets.headerLogo,
     homeDividerGraphic: "",
     authorPortrait: homeAssets.authorPortrait,
     heroAnnaSharpe: homeAssets.firstHeroBookCover,
@@ -26,7 +26,7 @@ export const siteConfig = {
   home: {
     annaSharpe: {
       headline:
-        "Alamiyah explores love, loss, and absence with philosophical depth. It observes pain as it is lived — unresolved, intimate, and real.",
+        "Poetry of what remains after loss.",
       quote:
         "What we have once enjoyed we can never lose.",
       quoteAttribution: "Helen Keller",

@@ -70,14 +70,14 @@ export default function Navbar() {
         {logoSrc ? (
           <Link
             href="/"
-            className="relative block h-9 w-[min(72vw,280px)] shrink-0 pl-8 transition-opacity hover:opacity-80 sm:pl-12 md:ml-0 md:h-11 md:w-[min(65vw,320px)] md:pl-16 lg:h-12 lg:w-[360px]"
+            className="relative block h-18 w-[min(92vw,480px)] ml-15"
           >
             <Image
               alt={siteConfig.authorName}
               className="object-contain object-left"
               fill
               priority
-              sizes="(max-width: 768px) 72vw, 360px"
+              sizes="(max-width: 768px) 120vw, (max-width: 1080px) 90vw, 1000px"
               src={logoSrc}
               unoptimized={imageUnoptimized(logoSrc)}
             />
@@ -85,7 +85,7 @@ export default function Navbar() {
         ) : (
           <Link
             href="/"
-            className="pl-8 font-sans text-xl font-bold tracking-[0.14em] text-white uppercase transition-colors hover:text-red-500 sm:pl-12 md:pl-16 md:text-2xl lg:text-[1.65rem] lg:tracking-[0.18em]"
+            className="pl-8 font-sans text-3xl font-bold leading-none tracking-[0.12em] text-white uppercase transition-colors hover:text-red-500 sm:pl-10 sm:text-4xl md:pl-12 md:text-5xl lg:pl-14"
           >
             {siteConfig.authorName}
           </Link>
