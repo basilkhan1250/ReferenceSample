@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Playfair_Display } from "next/font/google";
 import { siteConfig } from "../config/site";
-import ReadersClubForm from "./ReadersClubForm";
 import { imageUnoptimized } from "../lib/imageUtils";
 
 const display = Playfair_Display({
@@ -11,7 +10,6 @@ const display = Playfair_Display({
   display: "swap",
 });
 
-const lime = "text-[#c8e64a]";
 /** First hero: warm orange to match the first-book cover art */
 const firstHeroTitle = "text-[#ff9238]";
 const firstHeroButton =
@@ -175,16 +173,14 @@ export default function Home() {
             <h2
               className={[
                 display.className,
-                lime,
-                "text-3xl font-semibold md:text-4xl",
+                "text-3xl font-semibold text-white md:text-4xl",
               ].join(" ")}
             >
-              {h.readersClub.title}
+              {h.stayUpdated.title}
             </h2>
             <p className="max-w-lg font-sans text-base leading-relaxed text-white/90 md:text-lg">
-              {h.readersClub.body}
+              {h.stayUpdated.body}
             </p>
-            <ReadersClubForm theme="dark" />
           </div>
         </div>
       </section>

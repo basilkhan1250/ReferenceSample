@@ -20,7 +20,7 @@ export default function ReadersClubForm({ theme = "light" }) {
           dark ? "text-white/90" : "text-neutral-700",
         ].join(" ")}
       >
-        {siteConfig.home.readersClub.thanksMessage}
+        {siteConfig.home.stayUpdated.formThanksMessage}
       </p>
     );
   }

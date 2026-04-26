@@ -39,10 +39,11 @@ export const siteConfig = {
       ctaLabel: "Find out More",
       ctaHref: "/books/nietzsche-in-a-nutshell",
     },
-    readersClub: {
-      title: "Join my Readers' Club",
-      body: "Join my Readers' Club to receive a FREE short story, plus news of giveaways, book recommendations, writing tips and more.",
-      thanksMessage:
+    stayUpdated: {
+      title: "Stay Updated",
+      body: "Be the first to know about new books, articles, and updates.",
+      /** Used if `ReadersClubForm` is added back to a page */
+      formThanksMessage:
         "Thanks for joining me! Look out for the email asking you to confirm your address.",
     },
   },

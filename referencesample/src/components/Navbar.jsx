@@ -118,10 +118,10 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors hover:text-red-500",
+                  "inline-flex items-center gap-1 py-2 transition-colors",
                   linkActive(pathname, item.href)
-                    ? "text-lime-400"
-                    : "text-white/85",
+                    ? "text-red-500 hover:text-red-400"
+                    : "text-white hover:text-red-500",
                 ].join(" ")}
               >
                 {item.label}
@@ -132,8 +132,10 @@ export default function Navbar() {
           <li className="group relative">
             <span
               className={[
-                "inline-flex cursor-default items-center gap-1 py-2 transition-colors group-hover:text-red-500",
-                booksActive ? "text-lime-400" : "text-white/85",
+                "inline-flex cursor-default items-center gap-1 py-2 transition-colors",
+                booksActive
+                  ? "text-red-500 group-hover:text-red-400"
+                  : "text-white group-hover:text-red-500",
               ].join(" ")}
             >
               BOOKS
@@ -158,10 +160,10 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors hover:text-red-500",
+                  "inline-flex items-center gap-1 py-2 transition-colors",
                   linkActive(pathname, item.href)
-                    ? "text-lime-400"
-                    : "text-white/85",
+                    ? "text-red-500 hover:text-red-400"
+                    : "text-white hover:text-red-500",
                 ].join(" ")}
               >
                 {item.label}
