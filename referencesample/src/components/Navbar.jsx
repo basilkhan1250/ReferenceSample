@@ -70,7 +70,7 @@ export default function Navbar() {
         {logoSrc ? (
           <Link
             href="/"
-            className="relative block h-18 w-[min(92vw,480px)] ml-15"
+            className="group relative isolate block h-18 w-[min(92vw,480px)] ml-15"
           >
             <Image
               alt={siteConfig.authorName}
@@ -80,6 +80,10 @@ export default function Navbar() {
               sizes="(max-width: 768px) 120vw, (max-width: 1080px) 90vw, 1000px"
               src={logoSrc}
               unoptimized={imageUnoptimized(logoSrc)}
+            />
+            <span
+              className="pointer-events-none absolute inset-0 z-[1] bg-red-500 opacity-0 mix-blend-multiply transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
+              aria-hidden
             />
           </Link>
         ) : (
