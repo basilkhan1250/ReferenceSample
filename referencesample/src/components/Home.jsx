@@ -12,11 +12,14 @@ const display = Playfair_Display({
 });
 
 const lime = "text-[#c8e64a]";
-/** First book hero only (headline + CTA) — red instead of lime */
-const firstHeroTitle = "text-red-500";
-const firstHeroButton = "bg-red-500 hover:bg-red-600";
-const orange = "text-[#e07042]";
-const orangeBg = "bg-[#e07042]";
+/** First hero: warm orange to match the first-book cover art */
+const firstHeroTitle = "text-[#ff9238]";
+const firstHeroButton =
+  "bg-[#e85d04] text-white hover:bg-[#c94a03] hover:text-white";
+/** Second hero: white copy, black CTA */
+const secondHeroTitle = "text-white";
+const secondHeroButton =
+  "border border-white/25 bg-black text-white hover:bg-neutral-900 hover:text-white";
 
 function CoverFrame({ src, alt, priority = false }) {
   return (
@@ -105,17 +108,25 @@ export default function Home() {
             <h2
               className={[
                 display.className,
-                orange,
+                secondHeroTitle,
                 "text-2xl font-semibold leading-snug sm:text-3xl md:text-[1.75rem] lg:text-[2rem]",
               ].join(" ")}
             >
               {h.italyNovel.headline}
             </h2>
+            <blockquote className="space-y-3 text-white/95">
+              <p className="font-sans text-base italic leading-relaxed sm:text-lg">
+                &lsquo;{h.italyNovel.quote}&rsquo;
+              </p>
+              <footer className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
+                {h.italyNovel.quoteAttribution}
+              </footer>
+            </blockquote>
             <div className="flex flex-col items-start gap-5">
               <Link
                 className={[
-                  "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90",
-                  orangeBg,
+                  "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-colors",
+                  secondHeroButton,
                 ].join(" ")}
                 href={h.italyNovel.ctaHref}
               >

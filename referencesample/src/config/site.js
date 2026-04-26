@@ -9,8 +9,8 @@ export const siteConfig = {
   siteDescription:
     "Official author website — books, news, and readers club.",
   footer: {
-    startYear: 2016,
-    designCredit: "Site Design by Faith Tilleray",
+    startYear: 2026,
+    designCredit: "Created by Basil khan",
   },
 
   images: {
@@ -35,7 +35,10 @@ export const siteConfig = {
     },
     italyNovel: {
       headline:
-        "A chilling, mesmerising and darkly delicious novel inspired by real events that took place in 17th century Italy",
+        "The Death of God and more, made clear.",
+        quote:
+        "Become who you are.",
+      quoteAttribution: "Friedrich Nietzsche",
       ctaLabel: "Find out More",
       ctaHref: "/books/the-book-of-secrets",
     },
