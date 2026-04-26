@@ -17,30 +17,27 @@ export const siteConfig = {
     headerLogo: homeAssets.headerLogo,
     homeDividerGraphic: "",
     authorPortrait: homeAssets.authorPortrait,
-    heroAnnaSharpe: homeAssets.firstHeroBookCover,
-    heroItalyNovel: homeAssets.secondBookCover,
+    heroAlmiyah: homeAssets.firstHeroBookCover,
+    heroNietzsche: homeAssets.secondBookCover,
   },
 
   homeAssets,
 
   home: {
-    annaSharpe: {
+    almiyah: {
       headline:
         "Poetry of what remains after loss.",
-      quote:
-        "What we have once enjoyed we can never lose.",
+      quote: "What we have once enjoyed we can never lose.",
       quoteAttribution: "Helen Keller",
       ctaLabel: "Find out More",
-      ctaHref: "/books/alamiyah",
+      ctaHref: "/books/almiyah",
     },
-    italyNovel: {
-      headline:
-        "The Death of God and more, made clear.",
-        quote:
-        "Become who you are.",
+    nietzsche: {
+      headline: "The Death of God and more, made clear.",
+      quote: "Become who you are.",
       quoteAttribution: "Friedrich Nietzsche",
       ctaLabel: "Find out More",
-      ctaHref: "/books/the-book-of-secrets",
+      ctaHref: "/books/nietzsche-in-a-nutshell",
     },
     readersClub: {
       title: "Join my Readers' Club",
@@ -52,48 +49,27 @@ export const siteConfig = {
 
   books: [
     {
-      slug: "anna-sharpe",
-      navLabel: "Anna Sharpe Books",
-      pageTitle: "Anna Sharpe Books",
-      coverSrc: bookCoverBySlug["anna-sharpe"],
+      slug: "almiyah",
+      navLabel: "Almiyah",
+      pageTitle: "Almiyah",
+      coverSrc: bookCoverBySlug.almiyah,
       blurb:
-        "A fast-paced and razor-sharp thriller — the first Anna Sharpe novel.",
+        "A powerful exploration of what endures when everything else falls away — by Moiz Haider.",
     },
     {
-      slug: "the-book-of-secrets",
-      navLabel: "The Book of Secrets",
-      pageTitle: "The Book of Secrets",
-      coverSrc: bookCoverBySlug["the-book-of-secrets"],
-      blurb:
-        "A chilling, mesmerising novel inspired by real events in 17th century Italy.",
+      slug: "nietzsche-in-a-nutshell",
+      navLabel: "Nietzsche in a Nutshell",
+      pageTitle: "Nietzsche in a Nutshell",
+      coverSrc: bookCoverBySlug["nietzsche-in-a-nutshell"],
+      blurb: "A concise, vivid guide to Nietzsche’s essential ideas — by Moiz Haider.",
     },
     {
-      slug: "the-house-of-whispers",
-      navLabel: "The House of Whispers",
-      pageTitle: "The House of Whispers",
-      coverSrc: bookCoverBySlug["the-house-of-whispers"],
-      blurb: "",
-    },
-    {
-      slug: "the-clockwork-girl",
-      navLabel: "The Clockwork Girl",
-      pageTitle: "The Clockwork Girl",
-      coverSrc: bookCoverBySlug["the-clockwork-girl"],
-      blurb: "",
-    },
-    {
-      slug: "the-story-keeper",
-      navLabel: "The Story Keeper",
-      pageTitle: "The Story Keeper",
-      coverSrc: bookCoverBySlug["the-story-keeper"],
-      blurb: "",
-    },
-    {
-      slug: "the-unseeing",
-      navLabel: "The Unseeing",
-      pageTitle: "The Unseeing",
-      coverSrc: bookCoverBySlug["the-unseeing"],
-      blurb: "",
+      slug: "thoughts",
+      navLabel: "Thoughts",
+      pageTitle: "Thoughts",
+      coverSrc: bookCoverBySlug.thoughts,
+      blurb: "A new work — details to be announced.",
+      upcoming: true,
     },
   ],
 };

@@ -43,6 +43,11 @@ export default function BooksPage() {
                 <div>
                   <h2 className="font-serif text-xl font-semibold text-neutral-900 group-hover:underline">
                     {book.pageTitle}
+                    {book.upcoming ? (
+                      <span className="ml-2 align-middle text-xs font-normal uppercase tracking-wide text-amber-700">
+                        (upcoming)
+                      </span>
+                    ) : null}
                   </h2>
                   {book.blurb ? (
                     <p className="mt-2 text-sm leading-relaxed text-neutral-600">

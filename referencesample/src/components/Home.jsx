@@ -63,14 +63,14 @@ export default function Home() {
                 "text-2xl font-semibold leading-snug sm:text-3xl md:text-[1.75rem] lg:text-[2rem]",
               ].join(" ")}
             >
-              {h.annaSharpe.headline}
+              {h.almiyah.headline}
             </h2>
             <blockquote className="space-y-3 text-white/95">
               <p className="font-sans text-base italic leading-relaxed sm:text-lg">
-                &lsquo;{h.annaSharpe.quote}&rsquo;
+                &lsquo;{h.almiyah.quote}&rsquo;
               </p>
               <footer className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
-                {h.annaSharpe.quoteAttribution}
+                {h.almiyah.quoteAttribution}
               </footer>
             </blockquote>
             <div>
@@ -79,14 +79,14 @@ export default function Home() {
                   "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors",
                   firstHeroButton,
                 ].join(" ")}
-                href={h.annaSharpe.ctaHref}
+                href={h.almiyah.ctaHref}
               >
-                {h.annaSharpe.ctaLabel.toUpperCase()}
+                {h.almiyah.ctaLabel.toUpperCase()}
               </Link>
             </div>
           </div>
           <CoverFrame
-            alt={h.annaSharpe.headline}
+            alt={h.almiyah.headline}
             priority
             src={a.firstHeroBookCover}
           />
@@ -112,14 +112,14 @@ export default function Home() {
                 "text-2xl font-semibold leading-snug sm:text-3xl md:text-[1.75rem] lg:text-[2rem]",
               ].join(" ")}
             >
-              {h.italyNovel.headline}
+              {h.nietzsche.headline}
             </h2>
             <blockquote className="space-y-3 text-white/95">
               <p className="font-sans text-base italic leading-relaxed sm:text-lg">
-                &lsquo;{h.italyNovel.quote}&rsquo;
+                &lsquo;{h.nietzsche.quote}&rsquo;
               </p>
               <footer className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-white sm:text-sm">
-                {h.italyNovel.quoteAttribution}
+                {h.nietzsche.quoteAttribution}
               </footer>
             </blockquote>
             <div className="flex flex-col items-start gap-5">
@@ -128,9 +128,9 @@ export default function Home() {
                   "inline-block px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.2em] transition-colors",
                   secondHeroButton,
                 ].join(" ")}
-                href={h.italyNovel.ctaHref}
+                href={h.nietzsche.ctaHref}
               >
-                {h.italyNovel.ctaLabel.toUpperCase()}
+                {h.nietzsche.ctaLabel.toUpperCase()}
               </Link>
               <div className="relative h-24 w-40 opacity-95 sm:h-28 sm:w-44">
                 <Image
@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <CoverFrame alt={h.italyNovel.headline} src={a.secondBookCover} />
+            <CoverFrame alt={h.nietzsche.headline} src={a.secondBookCover} />
           </div>
         </div>
       </section>

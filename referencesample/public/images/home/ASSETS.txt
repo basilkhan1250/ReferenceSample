@@ -2,21 +2,17 @@ Put your image files in this folder: public/images/home/
 
 Use these exact filenames (or edit src/config/homeImagePaths.js):
 
-  header-logo.png               Navbar logo (replace the file; or rename in homeImagePaths)
-  author-portrait.jpg           Author photo (readers block + About page)
-  first-hero-background.jpg     Background for the first big hero section
-  second-hero-background.jpg    Background for the second hero section
-  readers-section-background.jpg   Background behind Readers Club
-  first-book-cover.jpg          First hero book ONLY (right column of first section)
-  second-book-cover.jpg         Second hero book + Book of Secrets book page (old shared cover)
-  decorative-illustration.png Small art under second hero button
-  third-book-cover.jpg          Also-by grid + book page (House of Whispers)
-  fourth-book-cover.jpg         Also-by + book page (Clockwork Girl)
-  fifth-book-cover.jpg          Also-by + book page (Story Keeper)
-  sixth-book-cover.jpg          Also-by + book page (Unseeing)
+  header-logo.png                Navbar logo (bump homeHeaderLogoVersion in homeImagePaths if cached)
+  author-portrait.jpg            Author photo (readers block + About page)
+  first-hero-background.jpg      First hero section background
+  second-hero-background.jpg     Second hero section background
+  readers-section-background.jpg Readers Club background
+  first-book-cover.jpg           Almiyah (first hero + /books/almiyah)
+  second-book-cover.jpg         Nietzsche in a Nutshell (second hero + /books/nietzsche-in-a-nutshell)
+  third-book-cover.jpg           Thoughts, upcoming (/books/thoughts)
+  decorative-illustration.png    Small art under second hero button
 
 If you use .png instead of .jpg, change the extension only in:
-  src/config/homeImagePaths.js  ->  object homeImageNames
+  src/config/homeImagePaths.js  ->  homeImageNames
 
-Anna Sharpe + Book of Secrets use first + second covers on the home heroes
-and the same files on /books/... routes.
+Slugs: almiyah, nietzsche-in-a-nutshell, thoughts

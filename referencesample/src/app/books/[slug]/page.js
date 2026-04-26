@@ -52,6 +52,11 @@ export default async function BookPage({ params }) {
           >
             {book.pageTitle}
           </h1>
+          {book.upcoming ? (
+            <p className="mt-4 inline-block rounded border border-amber-600/40 bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-amber-800">
+              Upcoming
+            </p>
+          ) : null}
           {book.blurb ? (
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700">
               {book.blurb}
