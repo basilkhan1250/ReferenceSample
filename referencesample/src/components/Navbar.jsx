@@ -11,7 +11,6 @@ const TOP_LINKS = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/articles", label: "ARTICLES" },
-  { href: "/news-events", label: "NEWS & EVENTS" },
   { href: "/contact", label: "CONTACT" },
 ];
 
@@ -64,13 +63,13 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black text-white shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
       <nav
-        className="flex h-28 w-full items-center justify-between px-0"
+        className="flex h-24 w-full items-center justify-between px-0"
         aria-label="Primary"
       >
         {logoSrc ? (
           <Link
             href="/"
-            className="group relative isolate block h-18 w-[min(92vw,480px)] ml-15"
+            className="relative block h-18 w-[min(92vw,480px)] ml-15"
           >
             <Image
               alt={siteConfig.authorName}
@@ -81,15 +80,11 @@ export default function Navbar() {
               src={logoSrc}
               unoptimized={imageUnoptimized(logoSrc)}
             />
-            <span
-              className="pointer-events-none absolute inset-0 z-[1] bg-red-500 opacity-0 mix-blend-multiply transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
-              aria-hidden
-            />
           </Link>
         ) : (
           <Link
             href="/"
-            className="pl-8 font-sans text-3xl font-bold leading-none tracking-[0.12em] text-white uppercase transition-colors hover:text-red-500 sm:pl-10 sm:text-4xl md:pl-12 md:text-5xl lg:pl-14"
+            className="pl-8 font-sans text-3xl font-bold leading-none tracking-[0.12em] text-white uppercase transition-opacity duration-200 hover:opacity-100 sm:pl-10 sm:text-4xl md:pl-12 md:text-5xl lg:pl-14"
           >
             {siteConfig.authorName}
           </Link>
