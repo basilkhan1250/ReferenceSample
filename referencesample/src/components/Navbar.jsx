@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { siteConfig } from "../config/site";
 import { imageUnoptimized } from "../lib/imageUtils";
 
@@ -14,18 +14,12 @@ const TOP_LINKS = [
   { href: "/contact", label: "CONTACT" },
 ];
 
-/** Current route: vivid red + glow so it reads “neon” on the black bar */
 const navLinkActiveNeon =
   "text-[#ff1744] [text-shadow:0_0_10px_rgba(255,23,68,0.95),0_0_22px_rgba(255,23,68,0.45)] transition-[color,text-shadow] duration-200 hover:text-[#ff5c8a] hover:[text-shadow:0_0_14px_rgba(255,92,138,0.85)]";
 
 function ChevronDownIcon(props) {
   return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
       <path
         fillRule="evenodd"
         d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.168l3.71-3.938a.75.75 0 1 1 1.08 1.04l-4.24 4.5a.75.75 0 0 1-1.08 0l-4.24-4.5a.75.75 0 0 1 .02-1.06Z"
@@ -46,6 +40,18 @@ export default function Navbar() {
   const booksActive = pathname.startsWith("/books");
   const logoSrc = siteConfig.images.headerLogo;
 
+  // 🔥 Scroll state
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const selectOptions = useMemo(() => {
     const opts = [{ href: "/", label: "HOME" }];
     for (const b of siteConfig.books) {
@@ -65,15 +71,25 @@ export default function Navbar() {
   }, [pathname, selectOptions]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black text-white shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
+    <header
+      className={`sticky top-0 z-50 border-b border-white/10 text-white shadow-[0_4px_24px_rgba(0,0,0,0.45)] transition-all duration-300 ${
+        scrolled ? "h-16 bg-black/90 backdrop-blur-md" : "h-24 bg-black"
+      }`}
+    >
       <nav
-        className="flex h-24 w-full items-center justify-between px-0"
-        aria-label="Primary"
+        className={`flex w-full items-center justify-between transition-all duration-300 ${
+          scrolled ? "h-16" : "h-24"
+        }`}
       >
+        {/* Logo */}
         {logoSrc ? (
           <Link
             href="/"
-            className="relative block h-18 w-[min(92vw,480px)] ml-15"
+            className={`relative block transition-all duration-300 ${
+              scrolled
+                ? "h-10 w-[160px] ml-6"
+                : "h-18 w-[min(92vw,480px)] ml-15"
+            }`}
           >
             <Image
               alt={siteConfig.authorName}
@@ -88,18 +104,19 @@ export default function Navbar() {
         ) : (
           <Link
             href="/"
-            className="pl-8 font-sans text-3xl font-bold leading-none tracking-[0.12em] text-white uppercase transition-opacity duration-200 hover:opacity-100 sm:pl-10 sm:text-4xl md:pl-12 md:text-5xl lg:pl-14"
+            className={`font-sans font-bold leading-none tracking-[0.12em] uppercase transition-all duration-300 ${
+              scrolled
+                ? "text-2xl pl-6"
+                : "text-5xl pl-14"
+            }`}
           >
             {siteConfig.authorName}
           </Link>
         )}
 
+        {/* Mobile Dropdown */}
         <div className="flex items-center gap-4 pr-4 sm:pr-8 md:hidden">
-          <label className="sr-only" htmlFor="select-page">
-            Select Page
-          </label>
           <select
-            id="select-page"
             className="max-w-[min(52vw,220px)] cursor-pointer border border-white/40 bg-black py-2 pl-3 pr-8 text-[11px] font-semibold uppercase tracking-[0.12em] text-white focus:border-red-500 focus:outline-none"
             value={selectValue}
             onChange={(e) => {
@@ -116,13 +133,18 @@ export default function Navbar() {
           </select>
         </div>
 
-        <ul className="hidden items-center gap-5 pr-10 text-[15px] font-semibold tracking-[0.10em] md:flex md:text-[15px] lg:gap-6 lg:text-[16px]">
+        {/* Desktop Nav */}
+        <ul
+          className={`hidden items-center pr-10 font-semibold tracking-[0.10em] md:flex transition-all duration-300 ${
+            scrolled ? "gap-4 text-[13px]" : "gap-6 text-[16px]"
+          }`}
+        >
           {TOP_LINKS.slice(0, 1).map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors",
+                  "inline-flex items-center py-2 transition-colors",
                   linkActive(pathname, item.href)
                     ? navLinkActiveNeon
                     : "text-white hover:text-red-500",
@@ -133,20 +155,25 @@ export default function Navbar() {
             </li>
           ))}
 
+          {/* Books Dropdown */}
           <li className="group relative">
             <span
               className={[
                 "inline-flex cursor-default items-center gap-1 py-2 transition-colors",
-                booksActive ? navLinkActiveNeon : "text-white group-hover:text-red-500",
+                booksActive
+                  ? navLinkActiveNeon
+                  : "text-white group-hover:text-red-500",
               ].join(" ")}
             >
               BOOKS
-              <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-current opacity-80" />
+              <ChevronDownIcon className="h-4 w-4 translate-y-[1px]" />
             </span>
+
             <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] translate-y-1 border border-white/10 bg-black py-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
               {siteConfig.books.map((b) => {
                 const bookPath = `/books/${b.slug}`;
                 const active = pathname === bookPath;
+
                 return (
                   <li key={b.slug}>
                     <Link
@@ -171,7 +198,7 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 className={[
-                  "inline-flex items-center gap-1 py-2 transition-colors",
+                  "inline-flex items-center py-2 transition-colors",
                   linkActive(pathname, item.href)
                     ? navLinkActiveNeon
                     : "text-white hover:text-red-500",
