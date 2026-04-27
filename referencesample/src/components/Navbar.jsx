@@ -14,6 +14,10 @@ const TOP_LINKS = [
   { href: "/contact", label: "CONTACT" },
 ];
 
+/** Current route: vivid red + glow so it reads “neon” on the black bar */
+const navLinkActiveNeon =
+  "text-[#ff1744] [text-shadow:0_0_10px_rgba(255,23,68,0.95),0_0_22px_rgba(255,23,68,0.45)] transition-[color,text-shadow] duration-200 hover:text-[#ff5c8a] hover:[text-shadow:0_0_14px_rgba(255,92,138,0.85)]";
+
 function ChevronDownIcon(props) {
   return (
     <svg
@@ -96,7 +100,7 @@ export default function Navbar() {
           </label>
           <select
             id="select-page"
-            className="max-w-[min(52vw,220px)] cursor-pointer border border-white/40 bg-black py-2 pl-3 pr-8 text-[11px] font-semibold uppercase tracking-[0.12em] text-white focus:border-lime-400 focus:outline-none"
+            className="max-w-[min(52vw,220px)] cursor-pointer border border-white/40 bg-black py-2 pl-3 pr-8 text-[11px] font-semibold uppercase tracking-[0.12em] text-white focus:border-red-500 focus:outline-none"
             value={selectValue}
             onChange={(e) => {
               const v = e.target.value;
@@ -120,7 +124,7 @@ export default function Navbar() {
                 className={[
                   "inline-flex items-center gap-1 py-2 transition-colors",
                   linkActive(pathname, item.href)
-                    ? "text-red-500 hover:text-red-400"
+                    ? navLinkActiveNeon
                     : "text-white hover:text-red-500",
                 ].join(" ")}
               >
@@ -133,25 +137,32 @@ export default function Navbar() {
             <span
               className={[
                 "inline-flex cursor-default items-center gap-1 py-2 transition-colors",
-                booksActive
-                  ? "text-red-500 group-hover:text-red-400"
-                  : "text-white group-hover:text-red-500",
+                booksActive ? navLinkActiveNeon : "text-white group-hover:text-red-500",
               ].join(" ")}
             >
               BOOKS
               <ChevronDownIcon className="h-4 w-4 translate-y-[1px] text-current opacity-80" />
             </span>
             <ul className="invisible absolute left-0 top-full z-50 min-w-[260px] translate-y-1 border border-white/10 bg-black py-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-              {siteConfig.books.map((b) => (
-                <li key={b.slug}>
-                  <Link
-                    href={`/books/${b.slug}`}
-                    className="block px-4 py-2 text-[13px] font-semibold tracking-wide text-white/90 transition-colors hover:bg-white/10 hover:text-red-500"
-                  >
-                    {b.navLabel}
-                  </Link>
-                </li>
-              ))}
+              {siteConfig.books.map((b) => {
+                const bookPath = `/books/${b.slug}`;
+                const active = pathname === bookPath;
+                return (
+                  <li key={b.slug}>
+                    <Link
+                      href={bookPath}
+                      className={[
+                        "block px-4 py-2 text-[13px] font-semibold tracking-wide transition-colors hover:bg-white/10",
+                        active
+                          ? navLinkActiveNeon
+                          : "text-white/90 hover:text-red-500",
+                      ].join(" ")}
+                    >
+                      {b.navLabel}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </li>
 
@@ -162,7 +173,7 @@ export default function Navbar() {
                 className={[
                   "inline-flex items-center gap-1 py-2 transition-colors",
                   linkActive(pathname, item.href)
-                    ? "text-red-500 hover:text-red-400"
+                    ? navLinkActiveNeon
                     : "text-white hover:text-red-500",
                 ].join(" ")}
               >
